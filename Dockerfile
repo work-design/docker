@@ -8,13 +8,11 @@ WORKDIR $APP_HOME
 
 # 设置 Ruby
 COPY Gemfile* package.gemspec $APP_HOME/
-RUN ls -al $APP_HOME
 RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
 # 设置 Node.js 编译环境
 #COPY test/dummy/package.json test/dummy/yarn.lock $APP_HOME/
-
 
 COPY . $APP_HOME
 RUN yarn install --cwd test/dummy --check-files
