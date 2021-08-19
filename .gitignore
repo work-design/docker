@@ -1,1 +1,2 @@
-.persistence
+.persistence/**/*
+!.persistence/templates/default.conf.template
