@@ -28,7 +28,7 @@ server {
   server_name ${NGINX_HOST};
 
   location ^~ /.well-known/ {
-    root ${NGINX_HOST}/public;
+    root ${NGINX_ROOT}/public;
     default_type text/html;
   }
 

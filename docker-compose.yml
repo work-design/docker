@@ -29,7 +29,7 @@ services:
       POSTGRES_URL: postgres://postgres:postgres@postgres/dummy_development
       SKIP_TEST_DATABASE: true
   sidekiq:
-    image: engine_sidekiq
+    image: engine_web
     restart: always
     depends_on:
       - web
@@ -44,7 +44,7 @@ services:
       - 80:80
       - 443:443
     environment:
-      NGINX_HOST: foobar.com
+      NGINX_HOST: kongque.work.design
       NGINX_ROOT: /app/public
     volumes:
       - .persistence/templates:/etc/nginx/templates
