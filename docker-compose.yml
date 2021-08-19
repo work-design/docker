@@ -27,7 +27,7 @@ services:
       RAILS_ENV: development
       REDIS_URL: redis://redis:6379
       POSTGRES_URL: postgres://postgres:postgres@postgres/dummy_development
-      SKIP_TEST_DATABASE: true
+      SKIP_TEST_DATABASE: 'true'
   sidekiq:
     image: engine_web
     restart: always
