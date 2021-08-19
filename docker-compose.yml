@@ -13,7 +13,7 @@ services:
     image: redis:6.2.5-alpine
     restart: always
   web:
-    image: rails_wechat
+    image: engine_web
     restart: always
     build:
       context: ..
@@ -27,9 +27,9 @@ services:
       RAILS_ENV: development
       REDIS_URL: redis://redis:6379
       POSTGRES_URL: postgres://postgres:postgres@postgres/dummy_development
-      SKIP_TEST_DATABASE: 'true'
+      SKIP_TEST_DATABASE: true
   sidekiq:
-    image: rails_wechat
+    image: engine_sidekiq
     restart: always
     depends_on:
       - web
@@ -45,7 +45,7 @@ services:
       - 443:443
     environment:
       NGINX_HOST: foobar.com
-      NGINX_PORT: 443 ssl
+      NGINX_ROOT: /app/public
     volumes:
       - .persistence/templates:/etc/nginx/templates
       - .persistence/conf.d:/etc/nginx/conf.d

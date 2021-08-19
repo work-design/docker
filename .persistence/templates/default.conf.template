@@ -28,7 +28,7 @@ server {
   server_name ${NGINX_HOST};
 
   location ^~ /.well-known/ {
-    root /home/ubuntu/web/shuren/current/public;
+    root ${NGINX_HOST}/public;
     default_type text/html;
   }
 
