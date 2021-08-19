@@ -7,11 +7,9 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # 设置 Ruby
-COPY Gemfile* $APP_HOME/
+COPY Gemfile* package.gemspec $APP_HOME/
 RUN ls -al $APP_HOME
-
 RUN bundle config set --local path 'vendor/bundle'
-
 RUN bundle install
 
 # 设置 Node.js 编译环境
