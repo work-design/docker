@@ -38,7 +38,7 @@ services:
       REDIS_URL: redis://redis:6379
     entrypoint: bundle exec sidekiq -r test/dummy
   nginx:
-    image: 1.21-alpine
+    image: nginx:1.21-alpine
     restart: always
     ports:
       - 80:80
@@ -47,3 +47,4 @@ services:
       - ./.persistence/conf.d:/etc/nginx/conf.d
       - ./.persistence/log:/var/log/nginx
       - ./.persistence/www:/var/www
+
