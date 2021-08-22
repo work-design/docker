@@ -16,7 +16,7 @@ COPY test/dummy/package.json test/dummy/yarn.lock $APP_HOME/
 RUN yarn install --cwd test/dummy --check-files
 
 # 编译 assets
-COPY . $APP_HOME
+COPY . $APP_HOME/
 RUN ls -al test/dummy/
 RUN bin/vite build # 预先编译前端
 
