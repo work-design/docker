@@ -15,12 +15,9 @@ RUN bundle install
 COPY test/dummy/package.json test/dummy/yarn.lock $APP_HOME/test/dummy/
 RUN yarn install --cwd test/dummy --check-files
 
-# 编译 assets
+# 编译 assets 并于完成后清理依赖
 COPY . $APP_HOME/
-RUN ls -al
-RUN ls -al test/dummy/
 RUN bin/vite build # 预先编译前端
-
 RUN rm -rf $APP_HOME/test/dummy/node_modules
 
 FROM ruby:3.0.2-alpine
