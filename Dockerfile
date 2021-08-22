@@ -17,6 +17,7 @@ RUN yarn install --cwd test/dummy --check-files
 
 # 编译 assets
 COPY . $APP_HOME/
+RUN ls -al
 RUN ls -al test/dummy/
 RUN bin/vite build # 预先编译前端
 
@@ -27,7 +28,6 @@ RUN apk --update add --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata
 COPY --from=build /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'
-RUN ls -al
 RUN chmod +x docker/entrypoint.sh
 
 EXPOSE 3000:3000
