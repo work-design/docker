@@ -17,6 +17,7 @@ RUN yarn install --cwd test/dummy --check-files
 
 # 编译 assets
 COPY . $APP_HOME
+RUN ls -al test/dummy/
 RUN bin/vite build # 预先编译前端
 
 RUN rm -rf $APP_HOME/test/dummy/node_modules
@@ -27,7 +28,6 @@ COPY --from=build /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'
 RUN ls -al
-RUN ls -al test/dummy/
 RUN chmod +x docker/entrypoint.sh
 
 EXPOSE 3000:3000
