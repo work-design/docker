@@ -12,13 +12,13 @@ RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
 # 安装 Node.js 依赖
-COPY test/dummy/package.json test/dummy/yarn.lock $APP_HOME/test/dummy/
-RUN yarn install --cwd test/dummy --check-files
+COPY package.json yarn.lock $APP_HOME/
+RUN yarn install --check-files
 
 # 编译 assets 并于完成后清理依赖
 COPY . $APP_HOME
 RUN bin/vite build # 预先编译前端
-RUN rm -rf $APP_HOME/test/dummy/node_modules
+RUN rm -rf $APP_HOME/node_modules
 
 FROM ruby:3.0.2-alpine
 RUN apk --update add --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata

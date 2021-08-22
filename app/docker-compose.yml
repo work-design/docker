@@ -17,7 +17,7 @@ services:
     restart: always
     build:
       context: ..
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/app/Dockerfile
     ports:
       - 3000:3000
     depends_on:
