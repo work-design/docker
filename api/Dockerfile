@@ -1,0 +1,16 @@
+FROM ruby:3.0.2-alpine
+RUN apk update && apk upgrade
+RUN apk add --update --no-cache build-base git postgresql-dev libxml2-dev libxslt-dev tzdata
+
+ENV APP_HOME /app
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+# 安装 Ruby 依赖
+COPY Gemfile* $APP_HOME/
+RUN bundle config set --local path 'vendor/bundle'
+RUN bundle install
+RUN chmod +x docker/entrypoint.sh
+
+EXPOSE 3000:3000
+CMD docker/entrypoint.sh

@@ -7,7 +7,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 # 安装 Ruby 依赖
-COPY Gemfile* package.gemspec $APP_HOME/
+COPY Gemfile* $APP_HOME/
 RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
@@ -21,7 +21,7 @@ RUN bin/vite build # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
 
 FROM ruby:3.0.2-alpine
-RUN apk --update add --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata
+RUN apk add --update --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata
 COPY --from=build /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'

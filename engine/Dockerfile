@@ -21,7 +21,7 @@ RUN bin/vite build
 RUN rm -rf $APP_HOME/test/dummy/node_modules
 
 FROM ruby:3.0.2-alpine
-RUN apk --update add --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata
+RUN apk add --update --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata
 COPY --from=build /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'

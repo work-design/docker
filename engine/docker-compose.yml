@@ -16,7 +16,7 @@ services:
     image: engine_web
     restart: always
     build:
-      context: ..
+      context: ../..
       dockerfile: docker/engine/Dockerfile
     ports:
       - 3000:3000
