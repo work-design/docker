@@ -7,7 +7,7 @@ services:
       - 80:80
       - 443:443
     environment:
-      NGINX_HOST: kongque.work.design
+      NGINX_HOST: work.design
       NGINX_ROOT: /app/public
     volumes:
       - .persistence/templates:/etc/nginx/templates
