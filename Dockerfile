@@ -12,10 +12,11 @@ RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
 # 设置 Node.js 编译环境
-#COPY test/dummy/package.json test/dummy/yarn.lock $APP_HOME/
-
-COPY . $APP_HOME
+COPY test/dummy/package.json test/dummy/yarn.lock $APP_HOME/
 RUN yarn install --cwd test/dummy --check-files
+
+# 编译 assets
+COPY . $APP_HOME
 RUN bin/vite build # 预先编译前端
 
 RUN rm -rf $APP_HOME/test/dummy/node_modules
