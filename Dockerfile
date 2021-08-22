@@ -17,7 +17,7 @@ RUN yarn install --cwd test/dummy --check-files
 
 # 编译 assets
 COPY . $APP_HOME/
-RUN ls -al
+RUN ls -al node_modules
 RUN ls -al test/dummy/
 RUN bin/vite build # 预先编译前端
 
