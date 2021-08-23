@@ -1,4 +1,4 @@
-# ln -s /home/ubuntu/web/.persistence/conf.d/default.conf ${NGINX_HOST}.conf
+# ln -s /home/ubuntu/.persistence/conf.d/${PROJECT}/default.conf ${NGINX_HOST}.conf
 server {
   listen 443 ssl;
   server_name ${NGINX_HOST};
