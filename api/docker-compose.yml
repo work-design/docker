@@ -7,8 +7,6 @@ services:
       - ../.persistence/db/${PROJECT}:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
-    ports:
-      - 5432:${POSTGRES_PORT}
   redis:
     image: redis:6.2.5-alpine
     restart: always
@@ -19,7 +17,7 @@ services:
       context: ../..
       dockerfile: docker/api/Dockerfile
     ports:
-      - 3000:3000
+      - ${WEB_PORT}:3000
     depends_on:
       - postgres
       - redis
