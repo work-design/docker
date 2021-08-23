@@ -13,7 +13,7 @@ services:
     image: redis:6.2.5-alpine
     restart: always
   web:
-    image: engine_web
+    image: ${WEB_IMAGE}
     restart: always
     build:
       context: ../..
@@ -24,12 +24,12 @@ services:
       - postgres
       - redis
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: redis://redis:6379
       POSTGRES_URL: postgres://postgres:postgres@postgres/dummy_development
       SKIP_TEST_DATABASE: 'true'
   sidekiq:
-    image: engine_web
+    image: ${WEB_IMAGE}
     restart: always
     depends_on:
       - web
