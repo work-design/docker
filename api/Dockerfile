@@ -12,7 +12,7 @@ RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
 COPY . $APP_HOME
-RUN chmod +x docker/entrypoint.sh
+RUN chmod +x docker/api/entrypoint.sh
 
 EXPOSE 3000:3000
-CMD docker/entrypoint.sh
+CMD docker/api/entrypoint.sh
