@@ -24,7 +24,8 @@ services:
     environment:
       RAILS_ENV: development
       REDIS_URL: redis://redis:6379
-      POSTGRES_URL: postgres://postgres:postgres@postgres/dummy_development
+      DATABASE_ADAPTER: ${DATABASE_ADAPTER}
+      DATABASE_URL: ${DATABASE_URL}
       SKIP_TEST_DATABASE: 'true'
   sidekiq:
     image: ${WEB_IMAGE}
