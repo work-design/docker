@@ -9,8 +9,9 @@ services:
     environment:
       NGINX_HOST: ${NGINX_HOST}
       NGINX_ROOT: /app/public
+      NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx/conf.d
     volumes:
-      - .persistence/templates:/etc/nginx/templates
-      - .persistence/conf.d:/etc/nginx/conf.d
-      - .persistence/ssl:/etc/nginx/ssl
-      - .persistence/log:/var/log/nginx
+      - ../.persistence/templates:/etc/nginx/templates
+      - ../.persistence/conf.d:/etc/nginx/conf.d
+      - ../.persistence/ssl:/etc/nginx/ssl
+      - ../.persistence/log:/var/log/nginx
