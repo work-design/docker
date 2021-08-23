@@ -4,7 +4,7 @@ services:
     image: postgres:13-alpine
     restart: always
     volumes:
-      - ../.persistence/db:/var/lib/postgresql/data
+      - ../.persistence/db/${PROJECT}:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
     ports:
