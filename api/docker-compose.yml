@@ -13,7 +13,7 @@ services:
     image: redis:6.2.5-alpine
     restart: always
   web:
-    image: rails_app
+    image: ${WEB_IMAGE}
     restart: always
     build:
       context: ../..
@@ -29,7 +29,7 @@ services:
       POSTGRES_URL: postgres://postgres:postgres@postgres/dummy_development
       SKIP_TEST_DATABASE: 'true'
   sidekiq:
-    image: rails_app
+    image: ${WEB_IMAGE}
     restart: always
     depends_on:
       - web
