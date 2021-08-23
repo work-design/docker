@@ -20,7 +20,7 @@ services:
       context: ../..
       dockerfile: docker/engine/Dockerfile
     ports:
-      - ${WEB_PORT}:${WEB_PORT}
+      - ${WEB_PORT}:3000
     depends_on:
       - postgres
       - redis
