@@ -22,7 +22,7 @@ services:
       - postgres
       - redis
     volumes:
-      - ../.persistence/.env.local:/app/.env.local
+      - ../.persistence/.env.production:/app/.env.production
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
