@@ -1,5 +1,17 @@
 version: '3'
 services:
+  postgres:
+    image: postgres:13-alpine
+    container_name: ${PROJECT}_postgres
+    restart: always
+    volumes:
+      - ~/.persistence/db/${PROJECT}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+  redis:
+    image: redis:6.2.5-alpine
+    container_name: ${PROJECT}_redis
+    restart: always
   nginx:
     image: nginx:1.21-alpine
     restart: always
