@@ -1,5 +1,4 @@
 FROM ruby:3.0.2-alpine as build
-RUN apk update && apk upgrade
 RUN apk add --update --no-cache build-base git nodejs yarn postgresql-dev libxml2-dev libxslt-dev tzdata
 
 ENV APP_HOME /app
