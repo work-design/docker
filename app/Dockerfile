@@ -25,7 +25,7 @@ RUN apk add --update --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata
 COPY --from=build /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'
-RUN chmod +x docker/app/entrypoint.sh
+RUN chmod +x docker/entrypoint_rails.sh
 
 EXPOSE 3000:3000
-CMD docker/app/entrypoint.sh
+CMD docker/entrypoint_rails.sh
