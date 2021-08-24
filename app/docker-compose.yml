@@ -23,7 +23,7 @@ services:
       - redis
     environment:
       RAILS_ENV: ${RAILS_ENV}
-      REDIS_URL: redis://redis:6379
+      REDIS_URL: ${REDIS_URL}
       DATABASE_ADAPTER: ${DATABASE_ADAPTER}
       DATABASE_URL: ${DATABASE_URL}
       SKIP_TEST_DATABASE: 'true'

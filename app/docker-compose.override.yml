@@ -13,6 +13,6 @@ services:
       NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx/conf.d/${PROJECT}
     volumes:
       - ../.persistence/templates:/etc/nginx/templates
-      - ../.persistence/conf.d:/etc/nginx/conf.d
-      - ../.persistence/ssl:/etc/nginx/ssl
-      - ../.persistence/log:/var/log/nginx
+      - ~/.persistence/conf.d:/etc/nginx/conf.d
+      - ~/.persistence/ssl:/etc/nginx/ssl
+      - ~/.persistence/log:/var/log/nginx
