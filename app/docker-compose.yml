@@ -2,6 +2,7 @@ version: '3'
 services:
   postgres:
     image: postgres:13-alpine
+    container_name: ${PROJECT}_postgres
     restart: always
     volumes:
       - ../.persistence/db:/var/lib/postgresql/data
@@ -9,9 +10,11 @@ services:
       POSTGRES_PASSWORD: postgres
   redis:
     image: redis:6.2.5-alpine
+    container_name: ${PROJECT}_redis
     restart: always
   web:
     image: ${WEB_IMAGE}
+    container_name: ${PROJECT}_web
     restart: always
     build:
       context: ../..
@@ -29,6 +32,7 @@ services:
       SKIP_TEST_DATABASE: 'true'
   sidekiq:
     image: ${WEB_IMAGE}
+    container_name: ${PROJECT}_sidekiq
     restart: always
     depends_on:
       - web
