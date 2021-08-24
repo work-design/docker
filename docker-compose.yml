@@ -19,12 +19,12 @@ services:
       - 80:80
       - 443:443
     environment:
-      NGINX_HOST: work.design
+      NGINX_HOST: ${NGINX_HOST}
       NGINX_ROOT: /app/public
       NGINX_PROJECT: ${PROJECT}
       NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx/conf.d/${PROJECT}
     volumes:
       - .persistence/templates:/etc/nginx/templates
-      - ~/.persistence/nginx/conf.d:/etc/nginx/conf.d
+      - ~/.persistence/nginx/conf.d/${PROJECT}:/etc/nginx/conf.d/${PROJECT}
       - ~/.persistence/nginx/ssl:/etc/nginx/ssl
       - ~/.persistence/nginx/log:/var/log/nginx
