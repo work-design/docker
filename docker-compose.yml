@@ -10,7 +10,7 @@ services:
       NGINX_HOST: work.design
       NGINX_ROOT: /app/public
     volumes:
-      - .persistence/templates:/etc/nginx/templates
-      - .persistence/conf.d:/etc/nginx/conf.d
-      - .persistence/ssl:/etc/nginx/ssl
-      - .persistence/log:/var/log/nginx
+      - ~/.persistence/templates:/etc/nginx/templates
+      - ~/.persistence/conf.d:/etc/nginx/conf.d
+      - ~/.persistence/ssl:/etc/nginx/ssl
+      - ~/.persistence/log:/var/log/nginx
