@@ -5,7 +5,7 @@ services:
     container_name: ${PROJECT}_postgres
     restart: always
     volumes:
-      - ~/.persistence/db/${PROJECT}:/var/lib/postgresql/data
+      - ~/.persistence/postgres/${PROJECT}:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
   redis:
@@ -22,7 +22,7 @@ services:
       NGINX_HOST: work.design
       NGINX_ROOT: /app/public
     volumes:
-      - ~/.persistence/templates:/etc/nginx/templates
-      - ~/.persistence/conf.d:/etc/nginx/conf.d
-      - ~/.persistence/ssl:/etc/nginx/ssl
-      - ~/.persistence/log:/var/log/nginx
+      - ~/.persistence/nginx/templates:/etc/nginx/templates
+      - ~/.persistence/nginx/conf.d:/etc/nginx/conf.d
+      - ~/.persistence/nginx/ssl:/etc/nginx/ssl
+      - ~/.persistence/nginx/log:/var/log/nginx
