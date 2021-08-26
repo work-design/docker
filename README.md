@@ -7,7 +7,7 @@
 
 ## docker-compose
 
-`docker-compose -f docker-compose.yml -f docker-compose.admin.yml`
+`docker-compose -f docker-compose.yml -f docker-compose.web.yml`
 
 ## debug
 
