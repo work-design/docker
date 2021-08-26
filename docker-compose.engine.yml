@@ -30,8 +30,5 @@ services:
       - web
     environment:
       RAILS_ENV: ${RAILS_ENV}
-      REDIS_PROVIDER: REDIS_URL
-    entrypoint: bundle exec sidekiq
-networks:
-  dockernet:
-    external: true
+      REDIS_PROVIDER: ${REDIS_URL}
+    entrypoint: bundle exec sidekiq -r test/dummy

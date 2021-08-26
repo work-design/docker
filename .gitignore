@@ -1,2 +1,3 @@
 .persistence/**/*
 !.persistence/templates/default.conf.template
+!.persistence/.env.production
