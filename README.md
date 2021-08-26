@@ -8,3 +8,7 @@
 ## docker-compose
 
 `docker-compose -f docker-compose.yml -f docker-compose.admin.yml`
+
+## debug
+
+`docker exec -it container_id_or_name /usr/bin/fish`
