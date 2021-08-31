@@ -31,7 +31,7 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_PROVIDER: REDIS_URL
-    entrypoint: bundle exec sidekiq
+    entrypoint: bundle exec sidekiq -v
 networks:
   dockernet:
     external: true
