@@ -20,7 +20,7 @@ RUN bin/vite build # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
 
 FROM ruby:3.0.2-alpine
-RUN apk add --update --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata
+RUN apk add --update --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata libgit2 cmake
 COPY --from=build /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'
