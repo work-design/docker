@@ -11,7 +11,7 @@ RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
 # 安装 Node.js 依赖
-COPY package.json yarn.lock $APP_HOME/
+COPY package.json yarn.lock .npmrc $APP_HOME/
 RUN yarn install --check-files
 
 # 编译 assets 并于完成后清理依赖
