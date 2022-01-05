@@ -1,5 +1,5 @@
-FROM ruby:3.0.2-alpine
-RUN apk add --update --no-cache build-base git fish postgresql-dev mariadb-dev libxml2-dev libxslt-dev tzdata
+FROM ruby:3.0.3-alpine
+RUN apk add --update --no-cache build-base git fish postgresql-dev libxml2-dev libxslt-dev tzdata
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME

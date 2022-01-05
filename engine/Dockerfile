@@ -1,4 +1,4 @@
-FROM ruby:3.0.2-alpine as build
+FROM ruby:3.0.3-alpine as build
 RUN apk add --update --no-cache build-base git nodejs yarn postgresql-dev libxml2-dev libxslt-dev tzdata libgit2 cmake
 
 ENV APP_HOME /app
