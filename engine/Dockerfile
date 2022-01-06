@@ -19,7 +19,7 @@ COPY . $APP_HOME
 RUN bin/vite build
 RUN rm -rf $APP_HOME/test/dummy/node_modules
 
-FROM ruby:3.0.2-alpine
+FROM ruby:3.0.3-alpine
 RUN apk add --update --no-cache fish postgresql-dev libxml2-dev libxslt-dev tzdata
 COPY --from=build /app /app
 WORKDIR /app
