@@ -27,7 +27,7 @@ services:
     container_name: ${PROJECT}_sidekiq
     restart: always
     depends_on:
-      - web
+    - web
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_PROVIDER: ${REDIS_URL}
