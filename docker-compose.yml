@@ -13,9 +13,9 @@ services:
     - postgres
     - redis
     volumes:
-    - .persistence/.env.production:/app/.env.production
-    - .persistence/logs:/app/logs
-    - .persistence/public:/app/public
+    - ~/.persistence/.env.production:/app/.env.production
+    - ~/.persistence/logs:/app/logs
+    - ~/.persistence/public:/app/public
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
