@@ -12,3 +12,14 @@
 ## debug
 
 `docker exec -it container_id_or_name /usr/bin/fish`
+
+
+## build 
+
+在项目目录下，运行 `docker-compose --env-file .env.docker -f docker/docker-compose.yml build`
+
+
+## 运行项目
+
+1. docker pull
+2. docker run ${WEB_IMAGE}
