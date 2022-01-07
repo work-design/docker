@@ -6,7 +6,7 @@ services:
     restart: always
     build:
       context: ..
-      dockerfile: docker/${TYPE}/Dockerfile
+      dockerfile: docker/engine/Dockerfile
     ports:
     - ${WEB_PORT}:3000
     depends_on:
@@ -15,7 +15,6 @@ services:
     volumes:
     - .persistence/.env.production:/app/.env.production
     - .persistence/logs:/app/logs
-    - .persistence/public:/app/public
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
@@ -30,5 +29,6 @@ services:
     - web
     environment:
       RAILS_ENV: ${RAILS_ENV}
-      REDIS_PROVIDER: ${REDIS_URL}
+      REDIS_URL: ${REDIS_URL}
+      REDIS_PROVIDER: REDIS_URL
     entrypoint: bundle exec sidekiq -v -r test/dummy
