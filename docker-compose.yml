@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   web:
     image: ${WEB_IMAGE}
@@ -8,26 +8,26 @@ services:
       context: ..
       dockerfile: docker/${TYPE}/Dockerfile
     ports:
-      - ${WEB_PORT}:3000
+     - ${WEB_PORT}:3000
     depends_on:
-      - postgres
-      - redis
+     - postgres
+     - redis
     volumes:
-      - .persistence/.env.production:/app/.env.production
-      - .persistence/logs:/app/logs
-      - .persistence/public:/app/public
+     - .persistence/.env.production:/app/.env.production
+     - .persistence/logs:/app/logs
+     - .persistence/public:/app/public
     environment:
-      - RAILS_ENV=${RAILS_ENV}
-      - REDIS_URL=${REDIS_URL}
-      - DATABASE_ADAPTER=${DATABASE_ADAPTER}
-      - DATABASE_URL=${DATABASE_URL}
-      - SKIP_TEST_DATABASE='true'
+      RAILS_ENV: ${RAILS_ENV}
+      REDIS_URL: ${REDIS_URL}
+      DATABASE_ADAPTER: ${DATABASE_ADAPTER}
+      DATABASE_URL: ${DATABASE_URL}
+      SKIP_TEST_DATABASE: 'true'
   sidekiq:
     image: ${WEB_IMAGE}
     container_name: ${PROJECT}_sidekiq
     restart: always
     depends_on:
-      - web
+     - web
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_PROVIDER: ${REDIS_URL}
