@@ -25,12 +25,13 @@ services:
   sidekiq:
     image: ${WEB_IMAGE}
     container_name: ${PROJECT}_sidekiq
-    restart: always
+    restart: 'no'
     depends_on:
      - web
     environment:
       RAILS_ENV: ${RAILS_ENV}
-      REDIS_PROVIDER: ${REDIS_URL}
+      REDIS_URL: ${REDIS_URL}
+      REDIS_PROVIDER: REDIS_URL
     entrypoint: bundle exec sidekiq -v
 networks:
   dockernet:
