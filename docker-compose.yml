@@ -17,11 +17,11 @@ services:
       - .persistence/logs:/app/logs
       - .persistence/public:/app/public
     environment:
-      RAILS_ENV: ${RAILS_ENV}
-      REDIS_URL: ${REDIS_URL}
-      DATABASE_ADAPTER: ${DATABASE_ADAPTER}
-      DATABASE_URL: ${DATABASE_URL}
-      SKIP_TEST_DATABASE: 'true'
+      - RAILS_ENV=${RAILS_ENV}
+      - REDIS_URL=${REDIS_URL}
+      - DATABASE_ADAPTER=${DATABASE_ADAPTER}
+      - DATABASE_URL=${DATABASE_URL}
+      - SKIP_TEST_DATABASE='true'
   sidekiq:
     image: ${WEB_IMAGE}
     container_name: ${PROJECT}_sidekiq
@@ -30,7 +30,7 @@ services:
       - web
     environment:
       RAILS_ENV: ${RAILS_ENV}
-      REDIS_PROVIDER: REDIS_URL
+      REDIS_PROVIDER: ${REDIS_URL}
     entrypoint: bundle exec sidekiq -v
 networks:
   dockernet:
