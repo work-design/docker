@@ -5,8 +5,9 @@ services:
     container_name: ${PROJECT}_postgres
     restart: always
     volumes:
-    - ~/.persistence/postgres/${PROJECT}:/var/lib/postgresql/data
+    - ~/.persistence/postgres/${PROJECT}:/opt/postgresql/data
     environment:
+      PGDATA: /opt/postgresql/data
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
   redis:
