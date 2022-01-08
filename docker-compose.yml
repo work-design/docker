@@ -14,7 +14,7 @@ services:
     - redis
     volumes:
     - log:/app/log
-    - public:/app/public
+    - well_know:/app/public/.well-known
     - acme:/app/acme
     environment:
       RAILS_ENV: ${RAILS_ENV}
@@ -37,6 +37,6 @@ networks:
   dockernet:
     external: true
 volumes:
-  public:
+  well_know:
   log:
   acme:
