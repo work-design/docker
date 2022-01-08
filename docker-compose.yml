@@ -13,8 +13,8 @@ services:
     - postgres
     - redis
     volumes:
-    - ~/.persistence/.env.production:/app/.env.production
-    - ~/.persistence/logs:/app/logs
+    - logs:/app/logs
+    - public:/app/public
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
@@ -35,3 +35,6 @@ services:
 networks:
   dockernet:
     external: true
+volumes:
+  public:
+  logs:
