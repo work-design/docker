@@ -6,9 +6,9 @@ services:
     restart: always
     privileged: true
     ports:
-    - target: 5432
-      published: 5430
-      mode: host
+      - target: 5432
+        published: 5430
+        mode: host
     volumes:
     - ~/.persistence/postgres/${PROJECT}:/opt/postgresql/data
     environment:
