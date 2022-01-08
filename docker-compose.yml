@@ -13,7 +13,7 @@ services:
     - postgres
     - redis
     volumes:
-    - logs:/app/logs
+    - log:/app/log
     - public:/app/public
     - acme:/app/acme
     environment:
@@ -38,5 +38,5 @@ networks:
     external: true
 volumes:
   public:
-  logs:
+  log:
   acme:
