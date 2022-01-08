@@ -4,6 +4,7 @@ services:
     image: postgres:14
     container_name: ${PROJECT}_postgres
     restart: always
+    privileged: true
     volumes:
     - ~/.persistence/postgres/${PROJECT}:/opt/postgresql/data
     environment:
