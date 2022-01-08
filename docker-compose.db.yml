@@ -5,6 +5,10 @@ services:
     container_name: ${PROJECT}_postgres
     restart: always
     privileged: true
+    ports:
+    - target: 5432
+      published: 5430
+      mode: host
     volumes:
     - ~/.persistence/postgres/${PROJECT}:/opt/postgresql/data
     environment:
