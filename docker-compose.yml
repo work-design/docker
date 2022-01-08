@@ -15,6 +15,7 @@ services:
     volumes:
     - logs:/app/logs
     - public:/app/public
+    - acme:/app/acme
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
@@ -38,3 +39,4 @@ networks:
 volumes:
   public:
   logs:
+  acme:
