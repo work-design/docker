@@ -1,19 +1,23 @@
 version: '3'
 services:
   postgres:
-    image: postgres:14
+    image: postgres:14-alpine
     container_name: ${PROJECT}_postgres
     restart: always
     privileged: true
     ports:
-      - 5430:5432
+    - 5430:5432
     volumes:
-    - ~/.persistence/postgres/${PROJECT}:/opt/postgresql/data
+    - postgres_data:/var/lib/postgresql/data
     environment:
-      PGDATA: /opt/postgresql/data
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
   redis:
-    image: redis:6.2-alpine
+    image: redis:6-alpine
     container_name: ${PROJECT}_redis
     restart: always
+    volumes:
+    - redis_data:/data
+volumes:
+  postgres_data:
+  redis_data:
