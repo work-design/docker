@@ -12,6 +12,8 @@ services:
     depends_on:
     - postgres
     - redis
+    networks:
+      rails:
     volumes:
     - log:/app/log
     - challenge:/app/public/challenge
@@ -28,13 +30,15 @@ services:
     restart: 'no'
     depends_on:
     - web
+    networks:
+      rails:
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
       REDIS_PROVIDER: REDIS_URL
     entrypoint: bundle exec sidekiq -v
 networks:
-  dockernet:
+  rails:
     external: true
 volumes:
   challenge:
