@@ -9,8 +9,6 @@ services:
       dockerfile: docker/node/Dockerfile
     ports:
     - 4000:4000
-    volumes:
-    - log:/app/log
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
