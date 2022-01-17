@@ -11,6 +11,6 @@ RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
 COPY . $APP_HOME
-RUN chmod +x docker/entrypoint_rails.sh
 
+RUN chmod +x docker/entrypoint_rails.sh
 CMD docker/entrypoint_rails.sh
