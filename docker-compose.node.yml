@@ -9,9 +9,14 @@ services:
       dockerfile: docker/node/Dockerfile
     ports:
     - 4000:4000
+    networks:
+      node:
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
       DATABASE_ADAPTER: ${DATABASE_ADAPTER}
       DATABASE_URL: ${DATABASE_URL}
       SKIP_TEST_DATABASE: 'true'
+networks:
+  node:
+    external: true
