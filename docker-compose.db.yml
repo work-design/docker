@@ -5,8 +5,6 @@ services:
     container_name: ${PROJECT}_postgres
     restart: always
     privileged: true
-    ports:
-    - 5430:5432
     networks:
       rails:
     volumes:

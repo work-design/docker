@@ -29,6 +29,9 @@ services:
     image: ${WEB_IMAGE}
     container_name: ${PROJECT}_sidekiq
     restart: 'no'
+    build:
+      context: ..
+      dockerfile: docker/${TYPE}/Dockerfile
     depends_on:
     - web
     networks:
@@ -37,10 +40,11 @@ services:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}
       REDIS_PROVIDER: REDIS_URL
+      DATABASE_ADAPTER: ${DATABASE_ADAPTER}
+      DATABASE_URL: ${DATABASE_URL}
     entrypoint: bundle exec sidekiq -v
 networks:
   rails:
-    external: true
 volumes:
   challenge:
   log:
