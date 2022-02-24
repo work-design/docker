@@ -1,4 +1,4 @@
-FROM ruby:3.0.3-alpine as build
+FROM ruby:3.1.1-alpine as build
 RUN apk add --update --no-cache build-base git fish nodejs yarn postgresql-dev libxml2-dev libxslt-dev tzdata
 
 ENV APP_HOME /app
@@ -20,7 +20,7 @@ COPY . $APP_HOME
 RUN bin/vite build # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
 
-FROM ruby:3.0.3-alpine
+FROM ruby:3.1.1-alpine
 RUN apk add --update --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata libgit2 cmake fish
 COPY --from=build /app /app
 WORKDIR /app
