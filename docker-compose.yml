@@ -25,9 +25,9 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       FONTAWESOME_NPM_AUTH_TOKEN: ${FONTAWESOME_NPM_AUTH_TOKEN}
       SKIP_TEST_DATABASE: 'true'
-  sidekiq:
+  job:
     image: ${WEB_IMAGE}
-    container_name: ${PROJECT}_sidekiq
+    container_name: ${PROJECT}_job
     restart: 'no'
     build:
       context: ..
@@ -42,7 +42,7 @@ services:
       REDIS_PROVIDER: REDIS_URL
       DATABASE_ADAPTER: ${DATABASE_ADAPTER}
       DATABASE_URL: ${DATABASE_URL}
-    entrypoint: bundle exec sidekiq -v
+    entrypoint: bundle exec good_job start
 networks:
   rails:
 volumes:
