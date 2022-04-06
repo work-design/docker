@@ -17,7 +17,7 @@ RUN yarn install --check-files
 
 # 编译 assets 并于完成后清理依赖
 COPY . $APP_HOME
-RUN bin/vite build # 预先编译前端
+RUN rake assets:precompile # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
 
 FROM ruby:3.1.1-alpine

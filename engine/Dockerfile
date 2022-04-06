@@ -16,7 +16,7 @@ RUN yarn install --cwd test/dummy --check-files
 
 # 编译静态资源，并于完成后清理依赖
 COPY . $APP_HOME
-RUN bin/vite build
+RUN rake assets:precompile
 RUN rm -rf $APP_HOME/test/dummy/node_modules
 
 FROM ruby:3.1.1-alpine
