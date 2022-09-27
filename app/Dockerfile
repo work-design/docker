@@ -19,7 +19,7 @@ COPY . $APP_HOME
 RUN rake assets:precompile # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
 
-FROM ruby:3.1.1-alpine
+FROM ruby:3.1-alpine
 RUN apk add --update --no-cache postgresql-dev libxml2-dev libxslt-dev tzdata libgit2 cmake fish
 COPY --from=build /app /app
 WORKDIR /app
