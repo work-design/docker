@@ -7,7 +7,7 @@
 
 ## 如何运行
 1. 在项目下运行：
-`docker-compose -f docker/docker-compose.yml -f docker/docker-compose.web.yml`
+`docker-compose --env-file .env.docker -f docker/docker-compose.yml -f docker/docker-compose.web.yml`
 
 
 ## 其他
@@ -16,8 +16,7 @@
 `docker exec -it container_id_or_name /usr/bin/fish`
 
 
-## build 
-
+## build
 在项目目录下，运行 `docker-compose --env-file .env.docker -f docker/docker-compose.yml build`
 
 
