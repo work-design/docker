@@ -5,10 +5,12 @@
 [Docker 指南](https://github.com/work-design/home/blob/main/developer/docker.md)
 
 
-## docker-compose
+## 如何运行
+1. 在项目下运行：
+`docker-compose -f docker/docker-compose.yml -f docker/docker-compose.web.yml`
 
-`docker-compose -f docker-compose.yml -f docker-compose.web.yml`
 
+## 其他
 ## debug
 
 `docker exec -it container_id_or_name /usr/bin/fish`
