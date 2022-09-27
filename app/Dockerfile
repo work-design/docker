@@ -7,7 +7,6 @@ WORKDIR $APP_HOME
 
 # 安装 Ruby 依赖
 COPY Gemfile* $APP_HOME/
-COPY vendor/gems $APP_HOME/vendor/gems/
 RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
