@@ -28,9 +28,6 @@ services:
     image: ${WEB_IMAGE-app}
     container_name: ${PROJECT}_job
     restart: 'no'
-    build:
-      context: ..
-      dockerfile: docker/${TYPE}/Dockerfile
     depends_on:
     - web
     networks:
