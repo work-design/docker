@@ -7,7 +7,7 @@
 
 ## 如何运行
 1. 在项目下运行：
-`docker-compose --env-file .env.docker -f docker/docker-compose.yml -f docker/docker-compose.web.yml`
+`docker-compose --env-file .env.docker -f docker/docker-compose.yml -f docker/docker-compose.db.yml`
 
 
 ## 其他
