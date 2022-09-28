@@ -8,7 +8,7 @@ services:
       context: ..
       dockerfile: docker/engine/Dockerfile
     ports:
-    - ${WEB_PORT}:3000
+    - ${WEB_PORT-3000}:3000
     depends_on:
     - postgres
     - redis
@@ -16,7 +16,7 @@ services:
     - .persistence/.env.production:/app/.env.production
     - .persistence/logs:/app/logs
     environment:
-      RAILS_ENV: ${RAILS_ENV}
+      RAILS_ENV: ${RAILS_ENV-development}
       REDIS_URL: ${REDIS_URL}
       DATABASE_ADAPTER: ${DATABASE_ADAPTER}
       DATABASE_URL: ${DATABASE_URL}

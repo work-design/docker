@@ -1,14 +1,14 @@
 version: '3'
 services:
   web:
-    image: ${WEB_IMAGE}
+    image: ${WEB_IMAGE-app}
     container_name: ${PROJECT}_web
     restart: always
     build:
       context: ..
       dockerfile: docker/${TYPE}/Dockerfile
     ports:
-    - ${WEB_PORT}:3000
+    - ${WEB_PORT-3000}:3000
     depends_on:
     - postgres
     - redis
@@ -19,13 +19,13 @@ services:
     - challenge:/app/public/challenge
     - acme:/app/acme
     environment:
-      RAILS_ENV: ${RAILS_ENV}
-      REDIS_URL: ${REDIS_URL}
-      DATABASE_ADAPTER: ${DATABASE_ADAPTER}
-      DATABASE_URL: ${DATABASE_URL}
+      RAILS_ENV: ${RAILS_ENV-development}
+      REDIS_URL: ${REDIS_URL-redis://redis:6379}
+      DATABASE_ADAPTER: ${DATABASE_ADAPTER-postgresql}
+      DATABASE_URL: ${DATABASE_URL-postgres://postgres:postgres@postgres/dummy_development}
       SKIP_TEST_DATABASE: 'true'
   job:
-    image: ${WEB_IMAGE}
+    image: ${WEB_IMAGE-app}
     container_name: ${PROJECT}_job
     restart: 'no'
     build:
@@ -36,11 +36,11 @@ services:
     networks:
       rails:
     environment:
-      RAILS_ENV: ${RAILS_ENV}
-      REDIS_URL: ${REDIS_URL}
+      RAILS_ENV: ${RAILS_ENV-development}
+      REDIS_URL: ${REDIS_URL-redis://redis:6379}
       REDIS_PROVIDER: REDIS_URL
-      DATABASE_ADAPTER: ${DATABASE_ADAPTER}
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_ADAPTER: ${DATABASE_ADAPTER-postgresql}
+      DATABASE_URL: ${DATABASE_URL-postgres://postgres:postgres@postgres/dummy_development}
     entrypoint: bundle exec good_job start
 networks:
   rails:
