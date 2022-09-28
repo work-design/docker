@@ -8,7 +8,7 @@ services:
     - 80:80
     - 443:443
     environment:
-      NGINX_HOST: ${NGINX_HOST}
+      NGINX_HOST: ${NGINX_HOST-engine.work.design}
       NGINX_ROOT: /app/public
       NGINX_PROJECT: ${PROJECT}
       NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx/conf.d/${PROJECT}

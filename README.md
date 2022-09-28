@@ -24,3 +24,8 @@
 
 1. docker pull
 2. docker run ${WEB_IMAGE}
+
+
+## 参考文档
+
+* [环境变量设置](https://docs.docker.com/compose/reference/envvars/)
