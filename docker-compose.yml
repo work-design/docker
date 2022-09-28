@@ -15,7 +15,7 @@ services:
     networks:
       rails:
     volumes:
-    - log:/app/log
+    - ../xxx:/app/log
     - challenge:/app/public/challenge
     - acme:/app/acme
     environment:
@@ -24,6 +24,7 @@ services:
       DATABASE_ADAPTER: ${DATABASE_ADAPTER-postgresql}
       DATABASE_URL: ${DATABASE_URL-postgres://postgres:postgres@postgres/dummy_development}
       SKIP_TEST_DATABASE: 'true'
+    entrypoint: bin/rails s -b 0.0.0.0
   job:
     image: ${WEB_IMAGE-app}
     container_name: ${PROJECT}_job
@@ -44,4 +45,5 @@ networks:
 volumes:
   challenge:
   log:
+    driver: platform
   acme:
