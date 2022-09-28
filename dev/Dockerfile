@@ -10,6 +10,10 @@ COPY Gemfile* $APP_HOME/
 RUN bundle config set --local path 'vendor/bundle'
 RUN bundle install
 
+# 安装 Node.js 依赖
+COPY package.json yarn.lock $APP_HOME/
+RUN yarn install --check-files
+
 COPY . $APP_HOME
 
 RUN chmod +x docker/entrypoint_rails.sh
