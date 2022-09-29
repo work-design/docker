@@ -22,7 +22,7 @@ services:
       DATABASE_ADAPTER: ${DATABASE_ADAPTER-postgresql}
       DATABASE_URL: ${DATABASE_URL-postgres://postgres:postgres@postgres/dummy_development}
       SKIP_TEST_DATABASE: 'true'
-    entrypoint: bin/rails s -b 0.0.0.0
+    entrypoint: bundle exec rails s -b 0.0.0.0
   job:
     image: ${WEB_IMAGE-app}
     container_name: ${PROJECT}_job
@@ -31,6 +31,12 @@ services:
       - web
     networks:
       rails:
+    environment:
+      RAILS_ENV: ${RAILS_ENV-development}
+      REDIS_URL: ${REDIS_URL-redis://redis:6379}
+      DATABASE_ADAPTER: ${DATABASE_ADAPTER-postgresql}
+      DATABASE_URL: ${DATABASE_URL-postgres://postgres:postgres@postgres/dummy_development}
+      SKIP_TEST_DATABASE: 'true'    
     entrypoint: bundle exec good_job start
   js:
     image: ${WEB_IMAGE-app}
