@@ -15,7 +15,7 @@ services:
     networks:
       rails:
     volumes:
-      - ${PATH}/${PROJECT}_dev:/app
+      - ${SHARED}/${PROJECT}_dev:/app
     environment:
       RAILS_ENV: ${RAILS_ENV-development}
       REDIS_URL: ${REDIS_URL-redis://redis:6379}
