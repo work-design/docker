@@ -44,6 +44,8 @@ services:
     restart: 'no'
     depends_on:
       - web
+    volumes:
+      - ../app:/app/app
     networks:
       rails:
     entrypoint: yarn run build --watch
@@ -53,6 +55,8 @@ services:
     restart: 'no'
     depends_on:
       - web
+    volumes:
+      - ../app:/app/app
     networks:
       rails:
     entrypoint: yarn run build:css --watch
