@@ -8,7 +8,7 @@ services:
       context: ..
       dockerfile: docker/node/Dockerfile
     ports:
-    - 4000:4000
+      - 4000:4000
     networks:
       node:
     environment:

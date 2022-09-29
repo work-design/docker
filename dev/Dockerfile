@@ -1,6 +1,5 @@
 FROM ruby:3.1-alpine
 RUN apk add --update --no-cache build-base libc6-compat git bash fish nodejs yarn postgresql-dev libxml2-dev libxslt-dev tzdata
-RUN gem install foreman
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME

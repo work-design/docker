@@ -8,13 +8,13 @@ services:
       context: ..
       dockerfile: docker/engine/Dockerfile
     ports:
-    - ${WEB_PORT-3000}:3000
+      - ${WEB_PORT-3000}:3000
     depends_on:
-    - postgres
-    - redis
+      - postgres
+      - redis
     volumes:
-    - .persistence/.env.production:/app/.env.production
-    - .persistence/logs:/app/logs
+      - .persistence/.env.production:/app/.env.production
+      - .persistence/logs:/app/logs
     environment:
       RAILS_ENV: ${RAILS_ENV-development}
       REDIS_URL: ${REDIS_URL}
@@ -26,7 +26,7 @@ services:
     container_name: ${PROJECT}_sidekiq
     restart: always
     depends_on:
-    - web
+      - web
     environment:
       RAILS_ENV: ${RAILS_ENV}
       REDIS_URL: ${REDIS_URL}

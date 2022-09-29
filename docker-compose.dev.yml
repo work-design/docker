@@ -15,9 +15,7 @@ services:
     networks:
       rails:
     volumes:
-      - log:/app/log
-      - challenge:/app/public/challenge
-      - acme:/app/acme
+      - ${PATH}/${PROJECT}_dev:/app/log
     environment:
       RAILS_ENV: ${RAILS_ENV-development}
       REDIS_URL: ${REDIS_URL-redis://redis:6379}
@@ -33,16 +31,24 @@ services:
       - web
     networks:
       rails:
-    environment:
-      RAILS_ENV: ${RAILS_ENV-development}
-      REDIS_URL: ${REDIS_URL-redis://redis:6379}
-      REDIS_PROVIDER: REDIS_URL
-      DATABASE_ADAPTER: ${DATABASE_ADAPTER-postgresql}
-      DATABASE_URL: ${DATABASE_URL-postgres://postgres:postgres@postgres/dummy_development}
     entrypoint: bundle exec good_job start
+  js:
+    image: ${WEB_IMAGE-app}
+    container_name: ${PROJECT}_js
+    restart: 'no'
+    depends_on:
+      - web
+    networks:
+      rails:
+    entrypoint: yarn run build --watch
+  css:
+    image: ${WEB_IMAGE-app}
+    container_name: ${PROJECT}_css
+    restart: 'no'
+    depends_on:
+      - web
+    networks:
+      rails:
+    entrypoint: yarn run build:css --watch
 networks:
   rails:
-volumes:
-  challenge:
-  log:
-  acme:
