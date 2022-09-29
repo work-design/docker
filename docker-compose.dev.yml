@@ -41,7 +41,8 @@ services:
   js:
     image: ${WEB_IMAGE-app}
     container_name: ${PROJECT}_js
-    restart: 'no'
+    restart: always
+    stdin_open: true
     depends_on:
       - web
     volumes:
