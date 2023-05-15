@@ -6,7 +6,11 @@
 
 
 ## 如何运行
-1. 在项目下运行：
+1. 准备
+  * 复制`.env`文件至项目下，命名为`.env.docker`, `cp .env ../.env.docker`
+  * 根据需要修改`.env.docker` 中的变量。
+
+2. 在项目下运行：
   * 开发环境：`docker-compose --env-file .env.docker -f docker/docker-compose.dev.yml -f docker/docker-compose.db.yml up --build`
 
 
