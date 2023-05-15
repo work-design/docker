@@ -15,9 +15,7 @@ services:
     networks:
       rails:
     volumes:
-      - log:/app/log
-      - challenge:/app/public/challenge
-      - acme:/app/acme
+      - ../app:/app/app
     environment:
       RAILS_ENV: ${RAILS_ENV-development}
       REDIS_URL: ${REDIS_URL-redis://redis:6379}
@@ -36,9 +34,9 @@ services:
     environment:
       RAILS_ENV: ${RAILS_ENV-development}
       REDIS_URL: ${REDIS_URL-redis://redis:6379}
-      REDIS_PROVIDER: REDIS_URL
       DATABASE_ADAPTER: ${DATABASE_ADAPTER-postgresql}
       DATABASE_URL: ${DATABASE_URL-postgres://postgres:postgres@postgres/dummy_development}
+      SKIP_TEST_DATABASE: 'true'
     entrypoint: bundle exec good_job start
 networks:
   rails:
