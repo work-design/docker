@@ -2,7 +2,7 @@
 
 配合 [Github Actions](https://github.com/work-design/.github) 使用
 
-[Docker 指南](https://github.com/work-design/home/blob/main/developer/docker.md)
+[Docker 指南](https://github.com/work-design/home/blob/main/开发文档/docker.md)
 
 
 ## 如何运行
