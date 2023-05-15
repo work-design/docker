@@ -6,7 +6,7 @@ services:
     restart: always
     build:
       context: ..
-      dockerfile: docker/${TYPE}/Dockerfile
+      dockerfile: docker/Dockerfile
     ports:
       - ${WEB_PORT-3000}:3000
     depends_on:
