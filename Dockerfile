@@ -1,4 +1,4 @@
-FROM ruby:3.1-alpine as build
+FROM ruby:3.2-alpine as build
 RUN apk add --update --no-cache build-base libc6-compat git fish nodejs yarn postgresql-dev libxml2-dev libxslt-dev tzdata
 
 ENV APP_HOME /app
@@ -19,7 +19,7 @@ COPY . $APP_HOME
 RUN rake assets:precompile # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
 
-FROM ruby:3.1-alpine
+FROM ruby:3.2-alpine
 RUN apk add --update --no-cache libc6-compat postgresql-dev libxml2-dev libxslt-dev tzdata libgit2 cmake fish
 COPY --from=build /app /app
 WORKDIR /app
