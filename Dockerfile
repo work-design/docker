@@ -1,4 +1,4 @@
-FROM ruby:3.2-alpine as build
+FROM ruby:3.2-alpine as base
 RUN apk add --update --no-cache build-base libc6-compat git fish nodejs yarn postgresql-dev libxml2-dev libxslt-dev tzdata
 
 ENV APP_HOME /app
@@ -21,7 +21,7 @@ RUN rm -rf $APP_HOME/node_modules
 
 FROM ruby:3.2-alpine
 RUN apk add --update --no-cache libc6-compat postgresql-dev libxml2-dev libxslt-dev tzdata libgit2 cmake fish
-COPY --from=build /app /app
+COPY --from=base /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'
 
