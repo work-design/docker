@@ -27,8 +27,6 @@ RUN bundle config set --local path 'vendor/bundle'
 
 RUN chmod +x docker/entrypoint_rails.sh
 
-ENTRYPOINT ["/app/docker/entrypoint_rails.sh"]
-
 EXPOSE 3000
 
-CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+CMD docker/entrypoint_rails.sh
