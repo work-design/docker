@@ -26,4 +26,7 @@ WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'
 
 RUN chmod +x docker/entrypoint_rails.sh
+
+EXPOSE 3000
+
 CMD docker/entrypoint_rails.sh
