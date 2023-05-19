@@ -1,5 +1,5 @@
 FROM ruby:3.2-alpine as base
-RUN apk add --update --no-cache build-base libc6-compat git fish nodejs yarn postgresql-dev libxml2-dev libxslt-dev tzdata
+RUN apk add --update --no-cache build-base libc6-compat git nodejs yarn postgresql-dev libxml2-dev libxslt-dev tzdata
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
