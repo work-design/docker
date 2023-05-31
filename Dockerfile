@@ -20,7 +20,7 @@ RUN rake assets:precompile # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
 
 FROM ruby:3.2-alpine
-RUN apk add --update --no-cache libc6-compat postgresql-dev libxml2-dev libxslt-dev tzdata libgit2 cmake glib vips fish curl
+RUN apk add --update --no-cache libc6-compat postgresql15-dev libxml2-dev libxslt-dev tzdata libgit2 cmake glib vips fish curl
 COPY --from=base /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'
