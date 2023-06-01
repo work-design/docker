@@ -1,5 +1,5 @@
-FROM ruby:3.2-alpine as base
-RUN apk add --update --no-cache --virtual build-base libc6-compat libpq-dev git nodejs yarn tzdata
+FROM ruby:3.2-alpine
+RUN apk add --update --no-cache --virtual build-base libc6-compat libpq-dev libgit2 vips git nodejs yarn tzdata fish curl cmake glib
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
@@ -18,13 +18,6 @@ RUN yarn install --check-files
 COPY . $APP_HOME
 RUN rake assets:precompile # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
-
-FROM ruby:3.2-alpine
-RUN apk add --update --no-cache --virtual libc6-compat libpq-dev tzdata libgit2 cmake glib vips fish curl
-COPY --from=base /app /app
-WORKDIR /app
-RUN bundle config set --local path 'vendor/bundle'
-
 RUN chmod +x docker/entrypoint_rails.sh
 
 EXPOSE 3000
