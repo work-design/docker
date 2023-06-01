@@ -1,5 +1,6 @@
 FROM ruby:3.2-alpine
-RUN apk add --update --no-cache --virtual build-base libc6-compat libpq-dev libgit2 vips git nodejs yarn tzdata fish curl cmake glib
+RUN apk update
+RUN apk add --update --no-cache --virtual build-base libc6-compat libpq-dev libgit2 vips git nodejs yarn tzdata fish curl
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
@@ -8,6 +9,7 @@ WORKDIR $APP_HOME
 # 安装 Ruby 依赖
 COPY Gemfile* $APP_HOME/
 RUN bundle config set --local path 'vendor/bundle'
+RUN bundle config set --local deployment true
 RUN bundle install
 
 # 安装 Node.js 依赖
