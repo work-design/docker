@@ -1,5 +1,5 @@
 FROM ruby:3.2-alpine as base
-RUN apk add --update --no-cache build-base libc6-compat git nodejs yarn libpq-dev tzdata
+RUN apk add --update --no-cache --virtual build-base make libc6-compat libpq-dev git nodejs yarn tzdata
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
@@ -20,7 +20,7 @@ RUN rake assets:precompile # 预先编译前端
 RUN rm -rf $APP_HOME/node_modules
 
 FROM ruby:3.2-alpine
-RUN apk add --update --no-cache libc6-compat libpq-dev tzdata libgit2 cmake glib vips fish curl
+RUN apk add --update --no-cache --virtual libc6-compat libpq-dev tzdata libgit2 cmake glib vips fish curl
 COPY --from=base /app /app
 WORKDIR /app
 RUN bundle config set --local path 'vendor/bundle'
