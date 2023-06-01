@@ -1,5 +1,5 @@
 FROM ruby:3.2-alpine as base
-RUN apk add --update --no-cache --virtual build-base make libc6-compat libpq-dev git nodejs yarn tzdata
+RUN apk add --update --no-cache --virtual build-base libc6-compat libpq-dev git nodejs yarn tzdata
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
