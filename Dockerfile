@@ -1,6 +1,6 @@
 FROM ruby:3.2-alpine
 RUN apk update
-RUN apk add --update --no-cache build-base libc6-compat postgresql15-dev libgit2 vips git nodejs yarn tzdata fish curl
+RUN apk add --update --no-cache build-base libc6-compat libpq-dev libgit2 vips git nodejs yarn tzdata fish curl
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
