@@ -19,7 +19,11 @@ RUN yarn install --check-files
 # 编译 assets 并于完成后清理依赖
 COPY . $APP_HOME
 RUN rake assets:precompile # 预先编译前端
+
+# 清理不必要的安装
 RUN rm -rf $APP_HOME/node_modules
+RUN apk del nodejs yarn
+
 RUN chmod +x docker/entrypoint_rails.sh
 
 EXPOSE 3000
