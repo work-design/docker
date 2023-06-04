@@ -8,7 +8,6 @@ WORKDIR $APP_HOME
 
 # 安装 Ruby 依赖
 COPY Gemfile* $APP_HOME/
-RUN bundle config set deployment true
 RUN bundle install
 
 # 安装 Node.js 依赖
