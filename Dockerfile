@@ -6,13 +6,13 @@ ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
-# 安装 Ruby 依赖
-COPY Gemfile* $APP_HOME/
-RUN bundle install
-
-# 安装 Node.js 依赖
+# 安装 Javascript 依赖
 COPY package.json yarn.lock $APP_HOME/
 RUN yarn install --check-files
+
+# 安装 Ruby 依赖，因为 Gem 变动频繁，故放在 js 后面，以充分利用缓存
+COPY Gemfile* $APP_HOME/
+RUN bundle install
 
 # 编译 assets 并于完成后清理依赖
 COPY . $APP_HOME
