@@ -7,7 +7,8 @@ ENV RAILS_ENV="production" \
 
 FROM base as build
 
-RUN apk update && apk add --update --no-cache build-base libpq-dev git nodejs yarn
+RUN apk update && \
+    apk add --update --no-cache build-base libpq-dev git nodejs yarn
 
 # 安装 Javascript 依赖
 COPY package.json yarn.lock ./
@@ -26,7 +27,8 @@ RUN bundle exec bootsnap precompile app/ lib/
 RUN rake assets:precompile # 预先编译前端
 
 FROM base
-RUN apk update && apk add --update --no-cache curl libgit2 vips tzdata libpq-dev fish
+RUN apk update && \
+    apk add --update --no-cache curl libgit2 vips tzdata libpq-dev fish
 
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
