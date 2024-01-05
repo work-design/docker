@@ -7,7 +7,7 @@ ENV RAILS_ENV="production" \
 
 FROM base as build
 
-RUN apk update && apk add --update --no-cache build-base libpq-dev git nodejs yarn
+RUN apk update && apk add --update --no-cache build-base libpq-dev gcompat git nodejs yarn
 
 # 安装 Javascript 依赖
 COPY package.json yarn.lock ./
@@ -23,7 +23,7 @@ RUN bundle install && \
 COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
-RUN ./bin/rails assets:precompile # 预先编译前端
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile # 预先编译前端
 
 FROM base
 RUN apk update && \
