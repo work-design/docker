@@ -8,7 +8,7 @@ ENV RAILS_ENV="production" \
 FROM base as build
 
 RUN apk update && \
-    apk add --update --no-cache build-base libpq-dev git nodejs yarn
+    apk add --update --no-cache build-base libpq-dev libffi git nodejs yarn
 
 # 安装 Javascript 依赖
 COPY package.json yarn.lock ./
