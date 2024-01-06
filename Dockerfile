@@ -2,8 +2,8 @@ FROM ruby:3.2-alpine as base
 
 # Rails App 所在位置
 WORKDIR /rails
-ENV RAILS_ENV="production" \
-    BUNDLE_PATH="/usr/local/bundle"
+ENV RAILS_ENV='production' \
+    BUNDLE_PATH='/usr/local/bundle'
 
 FROM base as build
 
@@ -23,8 +23,7 @@ COPY . .
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile # 预先编译前端
 
 FROM base
-RUN apk update && \
-    apk add --update --no-cache curl libgit2 vips tzdata libpq-dev fish
+RUN apk update && apk add --update --no-cache curl libgit2 vips tzdata libpq-dev fish
 
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
