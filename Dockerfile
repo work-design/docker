@@ -7,11 +7,11 @@ ENV RAILS_ENV='production' \
 
 FROM base as build
 
-RUN apk update && apk add --update --no-cache build-base libpq-dev gcompat git nodejs yarn
+RUN apk update && apk add --update --no-cache build-base libpq-dev gcompat git nodejs
 
 # 安装 Javascript 依赖
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN npm install --frozen-lockfile
 
 # 安装 Ruby 依赖，因为 Gem 变动频繁，故放在 js 后面，以充分利用缓存
 COPY Gemfile Gemfile.lock ./
