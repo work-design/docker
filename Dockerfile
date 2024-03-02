@@ -10,6 +10,7 @@ RUN apk update && apk add --update --no-cache build-base libpq-dev gcompat git
 # 安装 Ruby 依赖
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && rm -rf ~/.bundle/ ${BUNDLE_PATH}/ruby/*/cache ${BUNDLE_PATH}/ruby/*/bundler/gems/*/.git
+COPY . .
 
 FROM base
 RUN apk update && apk add --update --no-cache curl libgit2 vips tzdata libpq-dev fish
