@@ -1,4 +1,4 @@
-FROM ruby:3.2-alpine as base
+FROM ruby:3.3-alpine as base
 
 # Rails App 所在位置
 WORKDIR /rails
