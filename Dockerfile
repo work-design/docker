@@ -1,4 +1,4 @@
-FROM ruby:3.3-alpine as base
+FROM ccr.ccs.tencentyun.com/work-design/ruby:x86_64 as base
 
 # Rails App 所在位置
 WORKDIR /rails
@@ -9,6 +9,7 @@ RUN apk update && apk add --update --no-cache build-base libpq-dev gcompat git
 
 # 安装 Ruby 依赖
 COPY Gemfile Gemfile.lock ./
+RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com
 RUN bundle install && rm -rf ~/.bundle/ ${BUNDLE_PATH}/ruby/*/cache ${BUNDLE_PATH}/ruby/*/bundler/gems/*/.git
 COPY . .
 
@@ -18,8 +19,8 @@ RUN apk update && apk add --update --no-cache curl libgit2 vips tzdata libpq-dev
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
-RUN chmod +x docker/entrypoint_rails.sh
+RUN chmod +x deploy/entrypoint_rails.sh
 
 EXPOSE 3000
 
-CMD docker/entrypoint_rails.sh
+CMD deploy/entrypoint_rails.sh
